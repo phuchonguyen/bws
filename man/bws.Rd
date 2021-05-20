@@ -27,5 +27,5 @@ An object of class \code{stanfit} returned by \code{rstan::sampling}
 This function fits a Bayesian Weighted Sums as described in
 Bayesian Weighted Sums: A Flexible Approach to Estimate Summed Mixture Effects.
 Ghassan B. Hamra 1, Richard F. Maclehose, Lisa Croen, Elizabeth M. Kauffman
-and Craig Newschaffer. 2021. International Journal of Environmental Research and Public Health
+and Craig Newschaffer. 2021. International Journal of Environmental Research and Public Health.
 }

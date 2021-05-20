@@ -2,24 +2,40 @@
 output: github_document
 ---
 
-```{r setup, include=FALSE}
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%")
-options(tibble.print_min = 5, tibble.print_max = 5)
+  out.width = "100%"
+)
 ```
 
-```{r setup}
+# bws
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of bws is to provide a user-friendly and efficient implementation of the Bayesian Weighted Sums (BWS) described by Hamra, Maclehose, Croen, Kauffman, and Newschaffer (2021). 
+
+## Installation
+
+You can install the development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("phuchonguyen/bws")
+```
+## Example
+
+This is a basic example which shows you how to fit BWS:
+
+```{r example}
 library(bws)
-```
-
-# Demo of Bayesian Weighted Sums 
-
-Simulate some data:
-
-```{r}
+## We first need to simulate some data
+set.seed(123)
 N <- 100
 P <- 3
 K <- 2
@@ -31,19 +47,13 @@ theta1 <- 3
 beta <- runif(K, 0.5, 1.5)
 y <- theta0 + theta1*tcrossprod(X, w) + Z%*%beta + rnorm(N)
 y <- as.vector(y)
-```
-
-Note here the true weights are `r w` and coefficients of confounders are `r beta`.
-
-Fit a BWS model:
-
-```{r}
+## Fitting BWS is simple
 fit <- bws::bws(iter = 2000, y = y, X = X, Z = Z,
          # additional arguments for rstan
          chains = 4, cores = 2, show_messages = FALSE)
 ```
 
-Check convergence diagnostics and summaries:
+Since the implementation uses Stan and returns an `rstanfit` object, users can enjoy all the functionalities provided in `rstan` to analyze the fitted model:
 
 ```{r}
 rstan::traceplot(fit, pars = c("w", "theta1"), inc_warmup = TRUE, nrow = 2)
@@ -51,4 +61,13 @@ print(fit, pars = c("w", "theta1"))
 rstan::plot(fit)
 ```
 
-We see that the model infers the correct weights and coefficients.
+The model inferred the correct weights, which are set to `r paste(round(w,2))` in the simulation.
+
+## Reference:
+
+Hamra, G.B.; Maclehose,
+R.F.; Croen, L.; Kauffman, E.M.;
+Newschaffer, C. Bayesian Weighted
+Sums: A Flexible Approach to
+Estimate Summed Mixture Effects. *Int. J. Environ. Res. Public Health* **2021**,
+*18*, 1373. https://doi.org/10.3390/ijerph18041373
