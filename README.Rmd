@@ -1,0 +1,54 @@
+---
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%")
+options(tibble.print_min = 5, tibble.print_max = 5)
+```
+
+```{r setup}
+library(bws)
+```
+
+# Demo of Bayesian Weighted Sums 
+
+Simulate some data:
+
+```{r}
+N <- 100
+P <- 3
+K <- 2
+X <- matrix(rnorm(N*P), N, P)
+Z <- matrix(rnorm(N*K), N, K)  # confounders
+w <- gtools::rdirichlet(1, rep(1, P))
+theta0 <- 2
+theta1 <- 3
+beta <- runif(K, 0.5, 1.5)
+y <- theta0 + theta1*tcrossprod(X, w) + Z%*%beta + rnorm(N)
+y <- as.vector(y)
+```
+
+Note here the true weights are `r w` and coefficients of confounders are `r beta`.
+
+Fit a BWS model:
+
+```{r}
+fit <- bws::bws(iter = 2000, y = y, X = X, Z = Z,
+         # additional arguments for rstan
+         chains = 4, cores = 2, show_messages = FALSE)
+```
+
+Check convergence diagnostics and summaries:
+
+```{r}
+rstan::traceplot(fit, pars = c("w", "theta1"), inc_warmup = TRUE, nrow = 2)
+print(fit, pars = c("w", "theta1"))
+rstan::plot(fit)
+```
+
+We see that the model infers the correct weights and coefficients.
