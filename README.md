@@ -42,7 +42,7 @@ y <- theta0 + theta1*tcrossprod(X, w) + Z%*%beta + rnorm(N)
 y <- as.vector(y)
 ## Fitting BWS is simple
 fit <- bws::bws(iter = 2000, y = y, X = X, Z = Z,
-         # additional arguments for rstan
+         # additional arguments for rstan::sampling
          chains = 4, cores = 2, show_messages = FALSE)
 ```
 
@@ -69,7 +69,7 @@ print(fit, pars = c("w", "theta1"))
 #> w[3]   0.27       0 0.03 0.21 0.25 0.27 0.28  0.32  3361    1
 #> theta1 2.88       0 0.18 2.55 2.76 2.88 3.00  3.24  2038    1
 #> 
-#> Samples were drawn using NUTS(diag_e) at Thu May 20 09:35:56 2021.
+#> Samples were drawn using NUTS(diag_e) at Thu May 20 09:39:43 2021.
 #> For each parameter, n_eff is a crude measure of effective sample size,
 #> and Rhat is the potential scale reduction factor on split chains (at 
 #> convergence, Rhat=1).

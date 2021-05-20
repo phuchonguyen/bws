@@ -49,7 +49,7 @@ y <- theta0 + theta1*tcrossprod(X, w) + Z%*%beta + rnorm(N)
 y <- as.vector(y)
 ## Fitting BWS is simple
 fit <- bws::bws(iter = 2000, y = y, X = X, Z = Z,
-         # additional arguments for rstan
+         # additional arguments for rstan::sampling
          chains = 4, cores = 2, show_messages = FALSE)
 ```
 
