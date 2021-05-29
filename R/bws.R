@@ -25,7 +25,7 @@ bws <- function(iter, y, X, Z=NULL, alpha=NULL, ...) {
   K <- ncol(Z)
 
   data <- list(y=y, x=X, z=Z, N=N, P=P, K=K, alpha=alpha)
-  fit <- rstan::sampling(stanmodels$bws, data = data, ...)
+  fit <- rstan::sampling(stanmodels$bws, data = data, iter = iter, ...)
 
   return(fit)
 }
