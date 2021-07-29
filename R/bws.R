@@ -2,7 +2,7 @@
 #'
 #' This function fits a Bayesian Weighted Sums as described in
 #' Bayesian Weighted Sums: A Flexible Approach to Estimate Summed Mixture Effects.
-#' Ghassan B. Hamra 1, Richard F. Maclehose, Lisa Croen, Elizabeth M. Kauffman
+#' Ghassan B. Hamra 1, Richard F. MacLehose, Lisa Croen, Elizabeth M. Kauffman
 #' and Craig Newschaffer. 2021. International Journal of Environmental Research and Public Health.
 #' An extension for binary outcome is included.
 #'
