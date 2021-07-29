@@ -4,7 +4,7 @@
 \alias{bws}
 \title{Bayesian Weighted Sums}
 \usage{
-bws(iter, y, X, Z = NULL, alpha = NULL, ...)
+bws(iter, y, X, Z = NULL, alpha = NULL, family = "gaussian", ...)
 }
 \arguments{
 \item{iter}{Number of Hamiltonian Monte Carlo iterations}
@@ -18,6 +18,8 @@ bws(iter, y, X, Z = NULL, alpha = NULL, ...)
 \item{alpha}{A p-vector of hyperparameters for the Dirichlet prior on the weights.
 Default to be a vector of 1's.}
 
+\item{family}{A string "gaussian" for linear regression and "binomial" for logistic regression}
+
 \item{...}{Additional arguments for \code{rstan::sampling}}
 }
 \value{
@@ -28,4 +30,5 @@ This function fits a Bayesian Weighted Sums as described in
 Bayesian Weighted Sums: A Flexible Approach to Estimate Summed Mixture Effects.
 Ghassan B. Hamra 1, Richard F. Maclehose, Lisa Croen, Elizabeth M. Kauffman
 and Craig Newschaffer. 2021. International Journal of Environmental Research and Public Health.
+An extension for binary outcome is included.
 }
