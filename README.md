@@ -9,7 +9,8 @@
 
 The goal of bws is to provide a user-friendly and efficient
 implementation of the Bayesian Weighted Sums (BWS) described by Hamra,
-Maclehose, Croen, Kauffman, and Newschaffer (2021).
+Maclehose, Croen, Kauffman, and Newschaffer (2021) with some extensions
+to work with binary and count response data.
 
 ## Installation
 
@@ -69,7 +70,7 @@ print(fit, pars = c("w", "theta1"))
 #> w[3]   0.27       0 0.03 0.21 0.25 0.27 0.28  0.32  3361    1
 #> theta1 2.88       0 0.18 2.55 2.76 2.88 3.00  3.24  2038    1
 #> 
-#> Samples were drawn using NUTS(diag_e) at Thu May 20 09:39:43 2021.
+#> Samples were drawn using NUTS(diag_e) at Wed Sep 22 00:33:37 2021.
 #> For each parameter, n_eff is a crude measure of effective sample size,
 #> and Rhat is the potential scale reduction factor on split chains (at 
 #> convergence, Rhat=1).
