@@ -2,3 +2,5 @@
 bws.Rproj
 .Rhistory
 .Rbuildignore
+*.cpp
+*.o
