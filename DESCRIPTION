@@ -1,16 +1,19 @@
 Package: bws
 Title: Bayesian Weighted Sums
-Version: 0.1.0.9000
+Version: 0.1.0
 Authors@R: 
-    person(given = "Phuc",
+    person(given = "Phuc H.",
            family = "Nguyen",
            role = c("aut", "cre"),
-           email = "phuc.nguyen@duke.edu",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: A Bayesian Weighted Sums estimates the summed effect of multiple, often moderately to highly correlated, continuous predictors. Its applications can be found in analysis of exposure mixtures. This is an implementation of the model described by Hamra, Maclehose, Croen, Kauffman, and Newschaffer (2021).
+           email = "phuc.nguyen.rcran@gmail.com",
+           comment = c(ORCID = "0000-0002-6206-0194"))
+Description: An interface to the Bayesian Weighted Sums model implemented in RStan. 
+    It estimates the summed effect of multiple, often moderately to highly correlated, 
+    continuous predictors. Its applications can be found in analysis of exposure mixtures. 
+    The model was proposed by Hamra, Maclehose, Croen, Kauffman, and Newschaffer (2021).
+    This implementation include an extension to model binary outcome.
 License: GPL (>= 2)
 Encoding: UTF-8
-LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Biarch: true
@@ -30,3 +33,6 @@ LinkingTo:
     rstan (>= 2.18.1),
     StanHeaders (>= 2.18.0)
 SystemRequirements: GNU make
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3

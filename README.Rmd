@@ -33,7 +33,6 @@ devtools::install_github("phuchonguyen/bws")
 This is a basic example which shows you how to fit BWS:
 
 ```{r example}
-library(bws)
 ## We first need to simulate some data
 set.seed(123)
 N <- 100
@@ -41,12 +40,11 @@ P <- 3
 K <- 2
 X <- matrix(rnorm(N*P), N, P)
 Z <- matrix(rnorm(N*K), N, K)  # confounders
-w <- gtools::rdirichlet(1, rep(1, P))
+w <- c(0.3, 0.2, 0.5)
 theta0 <- 2
 theta1 <- 3
 beta <- runif(K, 0.5, 1.5)
-y <- theta0 + theta1*tcrossprod(X, w) + Z%*%beta + rnorm(N)
-y <- as.vector(y)
+y <- theta0 + theta1*theta1*(X%*%w) + Z%*%beta + rnorm(N)
 ## Fitting BWS is simple
 fit <- bws::bws(iter = 2000, y = y, X = X, Z = Z,
          # additional arguments for rstan::sampling

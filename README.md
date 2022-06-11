@@ -4,7 +4,6 @@
 # bws
 
 <!-- badges: start -->
-
 <!-- badges: end -->
 
 The goal of bws is to provide a user-friendly and efficient
@@ -27,7 +26,6 @@ devtools::install_github("phuchonguyen/bws")
 This is a basic example which shows you how to fit BWS:
 
 ``` r
-library(bws)
 ## We first need to simulate some data
 set.seed(123)
 N <- 100
@@ -35,22 +33,24 @@ P <- 3
 K <- 2
 X <- matrix(rnorm(N*P), N, P)
 Z <- matrix(rnorm(N*K), N, K)  # confounders
-w <- gtools::rdirichlet(1, rep(1, P))
+w <- c(0.3, 0.2, 0.5)
 theta0 <- 2
 theta1 <- 3
 beta <- runif(K, 0.5, 1.5)
-y <- theta0 + theta1*tcrossprod(X, w) + Z%*%beta + rnorm(N)
-y <- as.vector(y)
+y <- theta0 + theta1*theta1*(X%*%w) + Z%*%beta + rnorm(N)
 ## Fitting BWS is simple
 fit <- bws::bws(iter = 2000, y = y, X = X, Z = Z,
          # additional arguments for rstan::sampling
          chains = 4, cores = 2, show_messages = FALSE)
+#> Warning: replacing previous import 'lifecycle::last_warnings' by
+#> 'rlang::last_warnings' when loading 'tibble'
+#> Warning: replacing previous import 'lifecycle::last_warnings' by
+#> 'rlang::last_warnings' when loading 'pillar'
 ```
 
 Since the implementation uses Stan and returns an `rstanfit` object,
 users can enjoy all the functionalities provided in `rstan` to analyze
-the fitted
-model:
+the fitted model:
 
 ``` r
 rstan::traceplot(fit, pars = c("w", "theta1"), inc_warmup = TRUE, nrow = 2)
@@ -65,12 +65,12 @@ print(fit, pars = c("w", "theta1"))
 #> post-warmup draws per chain=1000, total post-warmup draws=4000.
 #> 
 #>        mean se_mean   sd 2.5%  25%  50%  75% 97.5% n_eff Rhat
-#> w[1]   0.05       0 0.03 0.00 0.03 0.05 0.07  0.12  2010    1
-#> w[2]   0.68       0 0.04 0.61 0.66 0.68 0.70  0.75  2401    1
-#> w[3]   0.27       0 0.03 0.21 0.25 0.27 0.28  0.32  3361    1
-#> theta1 2.88       0 0.18 2.55 2.76 2.88 3.00  3.24  2038    1
+#> w[1]   0.32       0 0.01 0.30 0.31 0.32 0.33  0.34  5292    1
+#> w[2]   0.19       0 0.01 0.17 0.18 0.19 0.19  0.21  5750    1
+#> w[3]   0.49       0 0.01 0.47 0.49 0.49 0.50  0.51  6125    1
+#> theta1 8.71       0 0.19 8.34 8.59 8.71 8.84  9.08  5388    1
 #> 
-#> Samples were drawn using NUTS(diag_e) at Wed Sep 22 00:33:37 2021.
+#> Samples were drawn using NUTS(diag_e) at Sat Jun 11 17:51:41 2022.
 #> For each parameter, n_eff is a crude measure of effective sample size,
 #> and Rhat is the potential scale reduction factor on split chains (at 
 #> convergence, Rhat=1).
@@ -81,8 +81,8 @@ rstan::plot(fit)
 
 <img src="man/figures/README-unnamed-chunk-2-2.png" width="100%" />
 
-The model inferred the correct weights, which are set to 0.08, 0.71,
-0.22 in the simulation.
+The model inferred the correct weights, which are set to 0.3, 0.2, 0.5
+in the simulation.
 
 ## Reference:
 

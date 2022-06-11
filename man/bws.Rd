@@ -26,9 +26,23 @@ Default to be a vector of 1's.}
 An object of class \code{stanfit} returned by \code{rstan::sampling}
 }
 \description{
-This function fits a Bayesian Weighted Sums as described in
+Fits a Bayesian Weighted Sums as described in
 Bayesian Weighted Sums: A Flexible Approach to Estimate Summed Mixture Effects.
 Ghassan B. Hamra 1, Richard F. MacLehose, Lisa Croen, Elizabeth M. Kauffman
 and Craig Newschaffer. 2021. International Journal of Environmental Research and Public Health.
 An extension for binary outcome is included.
+}
+\examples{
+\dontrun{
+N <- 50; P <- 3; K <- 2
+X <- matrix(rnorm(N*P), N, P)
+Z <- matrix(rnorm(N*K), N, K)  # confounders
+theta0 <- 0.5; theta1 <- 1.25
+w <- c(0.3, 0.2, 0.5)
+beta <- c(0.5, 0.3)
+y <- theta0 + theta1*(X\%*\%w) + Z\%*\%beta + rnorm(N)
+fit <- bws::bws(iter = 2000, y = y, X = X, Z = Z, family = "gaussian",
+                chains = 4, cores = 2, show_messages = FALSE)
+print(fit, pars = c("w", "theta1"))
+}
 }
