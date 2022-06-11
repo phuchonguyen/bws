@@ -4,3 +4,4 @@ bws.Rproj
 .Rbuildignore
 *.cpp
 *.o
+*.so
