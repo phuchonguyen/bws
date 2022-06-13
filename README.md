@@ -70,7 +70,7 @@ print(fit, pars = c("w", "theta1"))
 #> w[3]   0.49       0 0.01 0.47 0.49 0.49 0.50  0.51  6125    1
 #> theta1 8.71       0 0.19 8.34 8.59 8.71 8.84  9.08  5388    1
 #> 
-#> Samples were drawn using NUTS(diag_e) at Sat Jun 11 17:51:41 2022.
+#> Samples were drawn using NUTS(diag_e) at Mon Jun 13 00:06:38 2022.
 #> For each parameter, n_eff is a crude measure of effective sample size,
 #> and Rhat is the potential scale reduction factor on split chains (at 
 #> convergence, Rhat=1).
@@ -88,5 +88,6 @@ in the simulation.
 
 Hamra, G.B.; Maclehose, R.F.; Croen, L.; Kauffman, E.M.; Newschaffer, C.
 Bayesian Weighted Sums: A Flexible Approach to Estimate Summed Mixture
-Effects. *Int. J. Environ. Res. Public Health* **2021**, *18*, 1373.
-<https://doi.org/10.3390/ijerph18041373>
+Effects. *International Journal of Environmental Research and Public
+Health* **2021**, *18*, 1373.
+[link](https://doi.org/10.3390/ijerph18041373)

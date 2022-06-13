@@ -5,3 +5,5 @@ bws.Rproj
 *.cpp
 *.o
 *.so
+*.cc
+*.h

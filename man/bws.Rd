@@ -11,14 +11,16 @@ bws(iter, y, X, Z = NULL, alpha = NULL, family = "gaussian", ...)
 
 \item{y}{Am n-vector of outcomes}
 
-\item{X}{An n-by-p matrix of mixtures to be weightedly summed}
+\item{X}{An n-by-p matrix of mixtures to be weighted-summed}
 
-\item{Z}{Default NULL. A matrix of confounders whose linear effects are estimated}
+\item{Z}{Default NULL. A matrix of confounders whose linear effects are
+estimated}
 
-\item{alpha}{A p-vector of hyperparameters for the Dirichlet prior on the weights.
-Default to be a vector of 1's.}
+\item{alpha}{A p-vector of hyperparameters for the Dirichlet prior on the
+weights. Default to be a vector of 1's.}
 
-\item{family}{A string "gaussian" for linear regression and "binomial" for logistic regression}
+\item{family}{A string "gaussian" for linear regression and "binomial" for
+logistic regression}
 
 \item{...}{Additional arguments for \code{rstan::sampling}}
 }
@@ -26,11 +28,11 @@ Default to be a vector of 1's.}
 An object of class \code{stanfit} returned by \code{rstan::sampling}
 }
 \description{
-Fits a Bayesian Weighted Sums as described in
-Bayesian Weighted Sums: A Flexible Approach to Estimate Summed Mixture Effects.
-Ghassan B. Hamra 1, Richard F. MacLehose, Lisa Croen, Elizabeth M. Kauffman
-and Craig Newschaffer. 2021. International Journal of Environmental Research and Public Health.
-An extension for binary outcome is included.
+Fits a Bayesian Weighted Sums as described in Bayesian Weighted Sums: A
+Flexible Approach to Estimate Summed Mixture Effects. Ghassan B. Hamra 1,
+Richard F. MacLehose, Lisa Croen, Elizabeth M. Kauffman and Craig
+Newschaffer. 2021. International Journal of Environmental Research and Public
+Health. An extension for binary outcome is included.
 }
 \examples{
 \dontrun{
@@ -43,6 +45,6 @@ beta <- c(0.5, 0.3)
 y <- theta0 + theta1*(X\%*\%w) + Z\%*\%beta + rnorm(N)
 fit <- bws::bws(iter = 2000, y = y, X = X, Z = Z, family = "gaussian",
                 chains = 4, cores = 2, show_messages = FALSE)
-print(fit, pars = c("w", "theta1"))
+plot(fit)
 }
 }

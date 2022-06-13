@@ -1,18 +1,20 @@
 #' Bayesian Weighted Sums
 #'
-#' Fits a Bayesian Weighted Sums as described in
-#' Bayesian Weighted Sums: A Flexible Approach to Estimate Summed Mixture Effects.
-#' Ghassan B. Hamra 1, Richard F. MacLehose, Lisa Croen, Elizabeth M. Kauffman
-#' and Craig Newschaffer. 2021. International Journal of Environmental Research and Public Health.
-#' An extension for binary outcome is included.
+#' Fits a Bayesian Weighted Sums as described in Bayesian Weighted Sums: A
+#' Flexible Approach to Estimate Summed Mixture Effects. Ghassan B. Hamra 1,
+#' Richard F. MacLehose, Lisa Croen, Elizabeth M. Kauffman and Craig
+#' Newschaffer. 2021. International Journal of Environmental Research and Public
+#' Health. An extension for binary outcome is included.
 #'
 #' @param iter Number of Hamiltonian Monte Carlo iterations
 #' @param y    Am n-vector of outcomes
-#' @param X    An n-by-p matrix of mixtures to be weightedly summed
-#' @param Z    Default NULL. A matrix of confounders whose linear effects are estimated
-#' @param alpha A p-vector of hyperparameters for the Dirichlet prior on the weights.
-#' Default to be a vector of 1's.
-#' @param family A string "gaussian" for linear regression and "binomial" for logistic regression
+#' @param X    An n-by-p matrix of mixtures to be weighted-summed
+#' @param Z    Default NULL. A matrix of confounders whose linear effects are
+#'   estimated
+#' @param alpha A p-vector of hyperparameters for the Dirichlet prior on the
+#'   weights. Default to be a vector of 1's.
+#' @param family A string "gaussian" for linear regression and "binomial" for
+#'   logistic regression
 #' @param ... Additional arguments for `rstan::sampling`
 #' @return An object of class `stanfit` returned by `rstan::sampling`
 #' @examples
@@ -26,7 +28,7 @@
 #' y <- theta0 + theta1*(X%*%w) + Z%*%beta + rnorm(N)
 #' fit <- bws::bws(iter = 2000, y = y, X = X, Z = Z, family = "gaussian",
 #'                 chains = 4, cores = 2, show_messages = FALSE)
-#' print(fit, pars = c("w", "theta1"))
+#' plot(fit)
 #' }
 #' @export
 bws <- function(iter, y, X, Z=NULL, alpha=NULL, family="gaussian", ...) {

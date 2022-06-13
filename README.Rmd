@@ -65,7 +65,5 @@ The model inferred the correct weights, which are set to `r paste(round(w,2))` i
 
 Hamra, G.B.; Maclehose,
 R.F.; Croen, L.; Kauffman, E.M.;
-Newschaffer, C. Bayesian Weighted
-Sums: A Flexible Approach to
-Estimate Summed Mixture Effects. *Int. J. Environ. Res. Public Health* **2021**,
-*18*, 1373. https://doi.org/10.3390/ijerph18041373
+Newschaffer, C. Bayesian Weighted Sums: A Flexible Approach to Estimate Summed Mixture Effects. *International Journal of Environmental Research and Public Health* **2021**,
+*18*, 1373. [link](https://doi.org/10.3390/ijerph18041373)
