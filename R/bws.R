@@ -18,7 +18,6 @@
 #' @param ... Additional arguments for `rstan::sampling`
 #' @return An object of class `stanfit` returned by `rstan::sampling`
 #' @examples
-#' \dontrun{
 #' N <- 50; P <- 3; K <- 2
 #' X <- matrix(rnorm(N*P), N, P)
 #' Z <- matrix(rnorm(N*K), N, K)  # confounders
@@ -27,9 +26,7 @@
 #' beta <- c(0.5, 0.3)
 #' y <- theta0 + theta1*(X%*%w) + Z%*%beta + rnorm(N)
 #' fit <- bws::bws(iter = 2000, y = y, X = X, Z = Z, family = "gaussian",
-#'                 chains = 4, cores = 2, show_messages = FALSE)
-#' plot(fit)
-#' }
+#'                 chains = 2, cores = 2, refresh = 0)
 #' @export
 bws <- function(iter, y, X, Z=NULL, alpha=NULL, family="gaussian", ...) {
   y <- as.vector(y)

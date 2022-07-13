@@ -2,7 +2,7 @@
 
 There were no ERRORS or WARNINGS
 
-There were 2 NOTES:
+There were 3 NOTES:
 
 * checking installed package size ... NOTE
   installed size is 75.4Mb
