@@ -7,7 +7,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "phuc.nguyen.rcran@gmail.com",
            comment = c(ORCID = "0000-0002-6206-0194"))
-Description: An interface to the Bayesian Weighted Sums model implemented in RStan.
+Description: An interface to the Bayesian Weighted Sums model implemented in 'RStan'.
     It estimates the summed effect of multiple, often moderately to highly correlated,
     continuous predictors. Its applications can be found in analysis of exposure mixtures.
     The model was proposed by Hamra, Maclehose, Croen, Kauffman, and
