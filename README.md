@@ -13,6 +13,12 @@ to work with binary and count response data.
 
 ## Installation
 
+You can install the stable version from CRAN:
+
+``` r
+install.packages("bws")
+```
+
 You can install the development version from
 [GitHub](https://github.com/) with:
 
