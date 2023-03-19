@@ -22,6 +22,13 @@ The goal of bws is to provide a user-friendly and efficient implementation of th
 
 ## Installation
 
+Available on CRAN:
+
+``` r
+install.packages("bws")
+```
+
+
 You can install the development version from [GitHub](https://github.com/) with:
 
 ``` r
@@ -44,7 +51,7 @@ w <- c(0.3, 0.2, 0.5)
 theta0 <- 2
 theta1 <- 3
 beta <- runif(K, 0.5, 1.5)
-y <- theta0 + theta1*theta1*(X%*%w) + Z%*%beta + rnorm(N)
+y <- theta0 + theta1*(X%*%w) + Z%*%beta + rnorm(N)
 ## Fitting BWS is simple
 fit <- bws::bws(iter = 2000, y = y, X = X, Z = Z,
          # additional arguments for rstan::sampling
