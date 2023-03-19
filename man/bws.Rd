@@ -4,7 +4,16 @@
 \alias{bws}
 \title{Bayesian Weighted Sums}
 \usage{
-bws(iter, y, X, Z = NULL, alpha = NULL, family = "gaussian", ...)
+bws(
+  iter,
+  y,
+  X,
+  Z = NULL,
+  alpha = NULL,
+  family = "gaussian",
+  include_intercept = TRUE,
+  ...
+)
 }
 \arguments{
 \item{iter}{Number of Hamiltonian Monte Carlo iterations}
@@ -13,14 +22,16 @@ bws(iter, y, X, Z = NULL, alpha = NULL, family = "gaussian", ...)
 
 \item{X}{An n-by-p matrix of mixtures to be weighted-summed}
 
-\item{Z}{Default NULL. A matrix of confounders whose linear effects are
-estimated}
+\item{Z}{A matrix of confounders whose linear effects are estimated.
+Default NULL that includes the intercept if include_intercept is TRUE.}
 
 \item{alpha}{A p-vector of hyperparameters for the Dirichlet prior on the
 weights. Default to be a vector of 1's.}
 
 \item{family}{A string "gaussian" for linear regression and "binomial" for
-logistic regression}
+logistic regression.}
+
+\item{include_intercept}{Default TRUE, adds column of 1 to Z.}
 
 \item{...}{Additional arguments for \code{rstan::sampling}}
 }

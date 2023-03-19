@@ -2,7 +2,7 @@
 data {
   int<lower=1> N;
   int<lower=1> P;
-  int<lower=1> K;
+  int<lower=0> K;
   matrix[N, P] x;
   matrix[N, K] z;
   vector<lower=0>[P] alpha;  // Weights prior
