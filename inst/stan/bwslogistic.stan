@@ -8,7 +8,7 @@ data {
   matrix[N, P] x;
   matrix[N, K] z;
   vector<lower=0>[P] alpha;  // Weights prior
-  int<lower=0,upper=1> y[N];
+  array[N] int<lower=0,upper=1> y;
 }
 
 parameters {
